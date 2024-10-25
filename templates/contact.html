@@ -1,0 +1,60 @@
+
+
+<div class="contact" id="contact">
+    <!-- Capa transparente encima de la imagen -->
+    <div class="overlay"></div>
+    <!-- Formulario de contacto -->
+    <div class="formC">
+    <!--     <form method="post" action="/" id="FormContacto">
+            <h2 class="text-center">Formulario de Contacto</h2>
+            <input type="text" class="inputC" placeholder="Nombre" required>
+            <input type="text" class="inputC" placeholder="Apellido" required>           
+            <input type="text" class="inputC" placeholder="Localidad" required>
+            <input type="text" class="inputC" list="provincias" placeholder="Provincia" required>
+            <datalist id="provincias">
+                {% for provincia in provincias %}
+                <option value="{{ provincia }}"></option>
+                {% endfor %}
+            </datalist>
+            <input type="tel" class="inputC" placeholder="WhatsApp" required>
+            <textarea class="textAreaC" placeholder="Consulta" rows="5" required></textarea>
+            <button class="buttonC" type="submit">Enviar</button>
+        </form> -->
+
+   
+        <form method="POST" action="/enviar-formulario" id="FormContacto" class="container mt-4 needs-validation" novalidate>
+            <h2 class="text-center" ><i class="fas fa-envelope"></i> Formulario de Contacto</h2>
+        
+            <input type="text" id="nombre" class="form-control mb-3" 
+                   placeholder="Nombre" name="nombre" required>
+            <div class="invalid-feedback">El nombre debe comenzar con mayúscula y tener al menos 3 caracteres.</div>
+        
+            <input type="text" id="apellido" class="form-control mb-3" 
+                   placeholder="Apellido" name="apellido"  required>
+            <div class="invalid-feedback">El apellido debe comenzar con mayúscula y tener al menos 3 caracteres.</div>
+        
+            <input type="text" id="provincia" name="provincia" class="form-control mb-3" 
+                   list="provincias" placeholder="Provincia" required>
+            <datalist id="provincias">
+                {% for provincia in provincias %}
+                <option value="{{ provincia }}"></option>
+                {% endfor %}
+            </datalist>
+        
+            <input type="text" id="localidad" name="localidad" class="form-control mb-3" 
+                   placeholder="Localidad" required>
+
+            <input type="email"  id="email" class="form-control mb-3"  name="email" placeholder="Email" required>
+               <div class="invalid-feedback">Por favor, ingrese un correo electrónico válido.</div>
+
+            <input type="tel" id="whatsapp"  name="whatsapp" class="form-control mb-3" placeholder="WhatsApp" required>
+            <textarea id="consulta"  name="consulta" class="form-control mb-3" 
+                      placeholder="Consulta" rows="5" required></textarea>
+        
+            <button class="btn btn-dark w-100" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+            <!-- Elemento para mostrar la respuesta del servidor -->
+            <p id="respuestaServerFormulario" class="mt-3"></p>
+        </form>
+        
+    </div>
+</div>

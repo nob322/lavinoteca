@@ -1,0 +1,722 @@
+.ubuntu-light {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .ubuntu-regular {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .ubuntu-medium {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .ubuntu-light-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .ubuntu-regular-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .ubuntu-medium-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .ubuntu-bold-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  /*formato fe fecha y hora*/
+  .formatoFechaHora{
+    background-color: yellow;
+    color: black;
+    height: 28px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    
+  }
+  #fecha-hora {
+    font-size: 18px;
+    padding-top: -2px;
+    padding-bottom: 12px;
+}
+
+body {  /* Estilos generales del cuerpo de la página. */
+    background-color: white;  /* Fondo blanco. */
+    color: black;  /* Color de texto negro. */
+}
+.enlaces{
+ color:yellow;
+ text-decoration: none;
+}
+.navbar {  /* Estilos para la barra de navegación. */
+    background-color: black;  /* Fondo negro para la navbar. */
+    
+    width: 100%;
+}
+.navbar-brand img {  /* Estilos para la imagen del logotipo en la navbar. */
+    width: 200px; /* Ajusta el tamaño de la imagen del logo. */
+    height: auto;  /* Mantiene la proporción de la imagen. */
+}
+/*radio online*/
+  /* Reproductor base */
+  .audio-player {
+    width: 200px;                /* Ancho del reproductor */
+    height: 40px;                /* Altura del reproductor */
+    background-color: yellow;    /* Fondo amarillo */
+    overflow: hidden;
+    display: block;
+    
+    border: none;                /* Sin borde por defecto */
+    border-radius: 0;            /* Bordes cuadrados */
+  }
+  .margin-left-6{
+    margin-left:6px;
+  }
+
+  /* Estilo para los controles en navegadores que soportan este selector */
+  .audio-player::-webkit-media-controls-panel {
+    background-color: yellow !important; /* Fondo amarillo */
+    color: black !important; /* Botones en negro */
+    border-radius: 0; /* Bordes cuadrados para los controles */
+  }
+/*radio online*/
+
+
+
+
+/*.header {
+   /* position: relative; /* Asegura que la imagen de fondo y el overlay se posicionen correctamente */
+   /* background-image: url('../img/vinotecaH.jpg'); /* Imagen de fondo */
+   /* background-size: cover; /* Ajusta la imagen para cubrir todo el área */
+   /* background-position: center; /* Centra la imagen de fondo */
+   /* height: 96vh; /* Altura del encabezado */
+   /* display: flex; /* Flex para centrar el contenido */
+   /* align-items: center; /* Centra verticalmente */
+   /* justify-content: center; /* Centra horizontalmente */
+  /*  color: rgb(0, 0, 0); /* Color del texto */
+ /*   text-align: center; /* Alineación del texto */
+/* }*/
+
+/* .header::before {*/
+   /* content: ""; /* Necesario para el pseudo-elemento */
+   /* position: absolute; /* Posiciona el overlay */
+  /*  top: 0; /* Alinea al borde superior */
+  /*  left: 0; /* Alinea al borde izquierdo */
+  /*  right: 0; /* Alinea al borde derecho */
+ /*   bottom: 0; /* Alinea al borde inferior */
+ /*   background-color: rgba(255, 255, 0, 0.8); /* Color amarillo con 50% de transparencia */
+ /*   z-index: 1; /* Asegura que el overlay esté por encima de la imagen de fondo */
+/* }*/
+
+
+
+
+
+
+
+/* Estilo para el contenedor de partículas */
+#particles-js {
+  position: absolute; /* Asegura que el contenedor de partículas esté en una posición absoluta */
+  top: 0; /* Alinea al inicio del contenedor */
+  left: 0; /* Alinea al inicio del contenedor */
+  width: 100%; /* Ocupa todo el ancho del contenedor padre */
+  height: 100%; /* Ocupa todo el alto del contenedor padre */
+  z-index: 1; /* Coloca las partículas detrás de otros elementos */
+  background-color: rgba(255, 255, 0, 0.8);
+  
+}
+
+/* Estilo para el encabezado */
+.header {
+  position: relative; /* Permite que los hijos se posicionen en relación a este contenedor */
+  display: flex; /* Utiliza flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  height: 100vh; /* Hace que el contenedor del encabezado ocupe toda la altura de la ventana */
+  background-image: url('../img/vinotecaH.jpg'); /* Imagen de fondo */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el área */
+  background-position: center; /* Centra la imagen de fondo */
+  color: #f61414; /* Color del texto */
+}
+
+/* Estilo para el nuevo contenedor del contenido */
+.header-content {
+  position: relative; /* Asegura que el contenedor de texto esté en una posición relativa */
+  z-index: 2; /* Asegura que el texto y el botón estén por encima de las partículas */
+  color: #000000; /* Color del texto */
+  text-align: center; /* Centra el texto */
+}
+
+
+.maquinaEscribir {
+    display: block; /* Asegura que el texto quede en líneas separadas */
+    overflow: hidden;
+    white-space: nowrap;
+    animation: escribir 3s steps(40, end) 1 forwards;
+    border-right: 2px solid black;
+    max-width: 0; /* Comienza oculto */
+    margin-bottom: 10px; /* Espacio entre las líneas */
+}
+
+.maquinaEscribir:last-of-type {
+    animation-delay: 3.5s; /* La animación del párrafo comienza después del título */
+}
+
+@keyframes escribir {
+    from {
+        max-width: 0;
+    }
+    to {
+        max-width: 100%; /* Revela todo el texto */
+    }
+}
+
+@keyframes parpadeo-cursor {
+    0%, 100% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: black;
+    }
+}
+
+/* Después de la animación, mantener solo el parpadeo del cursor */
+.maquinaEscribir.end {
+    animation: parpadeo-cursor 0.7s steps(2, start) infinite;
+}
+
+
+
+
+
+.z-index-container{
+
+  z-index: 10000000000000;
+}
+
+
+
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cursor {
+  font-weight: bold;
+  display: inline-block;
+  width: 0.3ch; /* Asegura que el cursor tenga un tamaño fijo */
+  background-color: black;
+  animation: blink 0.6s steps(1) infinite;
+}
+
+/* Animación del parpadeo del cursor */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+
+.feature {  /* Estilos para las características. */
+    /*background-color: #ffcc00; /* Color amarillo (danger) para las características. */
+    background-color: yellow; /* Color amarillo (danger) para las características. */
+    border-radius: 5px;  /* Bordes redondeados. */
+    padding: 20px;  /* Espaciado interno. */
+    margin: 20px 0;  /* Margen vertical (20px arriba y abajo). */
+}
+
+/*arrow top*/
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0; /* Inicialmente invisible */
+  visibility: hidden; /* Evitar que ocupe espacio */
+  z-index: 99;
+  border-radius: 50%; /* Botón redondo */
+  border:white;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Transición suave */
+}
+
+/* Mostrar el botón con efecto */
+#btnSubir.mostrar {
+  opacity: 1;
+  visibility: visible; /* Lo hacemos visible */
+}
+/*arrow top*/
+
+/*slider*/
+.glide {
+  position: relative; /* Para posicionar flechas */
+  height: 400px; /* Alto del carrusel */
+  width: 100%; /* Ancho del carrusel */
+
+}
+.glide__slide img {
+  width: 100%; /* Ocupa el 100% del ancho */
+  height:400px; /* Ajusta la altura */
+  object-fit: cover; /* Mantiene la relación de aspecto */
+}
+.glide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semi-transparente */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Asegura que las flechas estén por encima de las imágenes */
+}
+.glide__arrow--left {
+  left: 25px; /* Alineación a la izquierda */
+}
+.glide__arrow--right {
+  right: 25px; /* Alineación a la derecha */
+}
+/*sñider*/
+
+
+
+
+
+/*graficos*/
+.fondoCharts{
+  /* Establece la imagen de fondo y el color de superposición */
+  background-image: url('../img/friends-drinking-red-wine.jpg');
+  background-color: rgba(247, 23, 23, 0.95); /* Color de fondo con transparencia  hermoso ideal vino tinto*/
+  background-color: rgba(0, 0, 0, 0.65); /* Color de fondo con transparencia */
+  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-blend-mode: multiply; /* Mezcla el color con la imagen */
+}
+/* .charts-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+
+
+  
+  /* Asegúrate de que el contenedor tenga una altura mínima */
+/*   min-height: 300px; /* Ajusta según sea necesario */
+/* }*/
+
+
+
+
+.charts-container {
+  /*background-color: #c14848;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Permitir que los gráficos bajen de línea si no hay espacio */
+   justify-content:center; /* Centrar los gráficos */
+}
+
+/*#historicalChart, #forecastChart {
+  flex: 1; /* Esto permite que los gráficos se expandan de manera responsiva */
+/*  max-width: 400px; /* Limitar el ancho máximo si es necesario */
+/*}*/
+
+#historicalChart, #forecastChart {
+  width: 390px;
+  flex: 1 1 300px; /* Los gráficos ocupan al menos 300px pero crecen si hay más espacio */
+  max-width: 100%; /* Limitar el ancho máximo */
+  height: auto; /* Fijar una altura constante */
+  background-color: #f0f0f03c; /* Fondo para distinguir los gráficos */
+  border: 1px solid #ccc; /* Borde para visualizar mejor */
+  border-radius: 8px; /* Esquinas redondeadas */
+  margin: 40px;
+}
+
+
+
+
+#consumoPerCapitaPorAnio,
+#consumoPerCapitaPorProvincia {
+  
+    width: 100%;
+    height: 400px; /* Ajusta la altura según tus necesidades */
+    margin-bottom: 20px; /* Espacio entre los gráficos */
+}
+/**/
+
+
+
+
+
+
+
+/*eventos virtuales*/
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #c14848; /* Fondo negro */
+  color: white; /* Texto blanco */
+}
+.table-striped tbody tr:nth-child(even) {
+  background-color: #ffffff; /* Fondo blanco */
+  color: black; /* Texto negro */
+}
+.table-striped tbody tr:nth-child(even) a {
+  color: black; /* Enlace en botón amarillo */
+}
+thead tr {
+  background-color: black;
+  color: white;
+}
+.btn-yellow {
+  background-color: yellow;
+  color: black;
+}
+.btn-yellow:hover {
+  background-color: rgb(93, 93, 93);
+  color: rgb(245, 227, 24);
+}
+
+
+
+
+
+/*.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+/*diseño1*/
+/*.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/*diseño1*/
+
+
+
+/*
+.modal {
+  display: none; /* Oculto por defecto */
+ /* position: fixed; /* Fijo en la pantalla */
+ /* z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+ /* left: 0; /* Alinea a la izquierda */
+ /* top: 0; /* Alinea a la parte superior */
+ /* width: auto; /* Ancho automático */
+ /*// height: auto; /* Alto automático */
+ /* overflow: auto; /* Permite desplazamiento si es necesario */
+ /* background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+/*}*/
+
+/*.modal-content {
+  background-color: white; /* Fondo blanco para el contenido del modal */
+ /*/ margin: 15px; /* Espacio alrededor del modal */
+/*  padding: 20px; /* Espacio interno del contenido */
+/*  border-radius: 5px; /* Bordes redondeados */
+/*}*/
+/**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  left: 0; /* Alinea a la izquierda */
+  top: 0; /* Alinea a la parte superior */
+  width: 250px; /* Ancho del menú */
+  height: 100%; /* Alto completo de la pantalla */
+  background-color: rgba(0, 0, 0, 0.75); /* Fondo semi-transparente */
+  padding: 20px; /* Espaciado interno */
+  overflow-y: auto; /* Desplazamiento vertical si es necesario */
+  
+}
+
+
+.modal-content {
+  background-color: transparent; /* Fondo transparente para que se vea el fondo oscuro */
+  color: white; /* Color del texto */
+}
+
+.close-button {
+  color: white; /* Color del botón de cerrar */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  font-size: 20px; /* Tamaño de fuente para el botón de cerrar */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilo para el formulario */
+#formInscripcion {
+  display: flex;
+  flex-direction: column; /* Coloca los elementos del formulario en columna */
+}
+
+#formInscripcion label, #formInscripcion input, #formInscripcion button {
+  margin-bottom: 10px; /* Espacio inferior entre los elementos del formulario */
+}
+
+.danger-text{
+  color: rgb(252, 114, 114);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*nosotros*/
+ /* Aseguramos que la sección ocupe el 100% del viewport */
+ .nosotros-section {
+  height: 100vh;  /* 100% del alto de la pantalla */
+
+ /* background: linear-gradient(to bottom right, #000000, #eff308);  Fondo degradado */
+  background: black; /* Fondo degradado */
+  color: #fff;  /* Texto en blanco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 20px;
+}
+
+.timeline .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinea los puntos verticalmente */
+}
+
+.timeline-item {
+  position: relative;
+  text-align: center;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: yellow; /* Color de los puntos */
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px; /* Espacio entre el punto y el texto */
+}
+
+.line {
+  position: absolute;
+  top: 25px; /* Ajusta esta posición para que la línea conecte los puntos */
+  left: 0;
+  right: 0;
+  height: 4px; /* Grosor de la línea */
+  background: yellow; /* Color de la línea */
+  z-index: 0; /* Asegura que la línea esté detrás de los puntos */
+  margin: 0 auto; /* Centra la línea */
+  pointer-events: none; /* Asegura que no interfiera con los puntos */
+}
+/*nosotros*/
+
+/*productos*/
+.size-img{
+  height: 170px;
+  width: 100%;
+}
+/*productos*/
+
+
+/*parallax*/
+.parallax {
+  
+  background-image: url('https://img.freepik.com/fotos-premium/foto-mujer-joven-bebiendo-vino-tinto-vidrio_152404-6621.jpg?w=740');
+  /*background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/ADVJHUCUS5FINPLN2PXFAQICGI.jpeg');*/
+  height: 40vw; /* Alto de 40vw */
+  background-attachment: fixed; /* Efecto parallax */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* La imagen cubre el área del div */
+}
+/*parallax*/
+/*bodegas*/
+   /* Estilo para las tarjetas de bodegas */
+   .bodega-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.bodega-card-body {
+    flex-grow: 1; /* Hacer que el cuerpo de la tarjeta ocupe todo el espacio disponible */
+}
+/*bodegas*/
+/*contacto*/
+/* Contenedor de la sección de contacto con la imagen de fondo */      /* Sección de contacto con imagen de fondo */
+        .contact {
+            padding: 20px 0; /* Espaciado vertical */
+            background: url('../img/fondoC.jpg') no-repeat center center/cover;
+         
+            width: 100%;
+            height: 100vh; /* Ocupa toda la pantalla */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Capa encima de la imagen de fondo con transparencia */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(246, 218, 0, 0.5); /* Capa oscura transparente */
+            z-index: 1;
+        }
+
+        /* Contenedor del formulario */
+        .formC {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 204, 0, 0.8); /* Fondo amarillo con transparencia */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo para los campos de entrada y el área de texto */
+        .inputC, .textAreaC {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Área de texto grande */
+        .textAreaC {
+            resize: none; /* Deshabilita el redimensionamiento */
+        }
+
+        /* Botón personalizado */
+        .buttonC {
+            background-color: #ffcc00;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Efecto hover para el botón */
+        .buttonC:hover {
+            background-color: #e6b800;
+        }
+
+        /*respueta asincróna del server*/
+        #respuestaServerFormulario {
+          display: none;
+          /*Inicialmenteoculto*/padding: 10px;
+          margin-top: 10px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+          text-align: center;
+}   
+
+/*contacto*/
+footer {  /* Estilos para el pie de página. */
+    background-color: black;  /* Fondo negro. */
+    color: white;  /* Texto blanco. */
+    text-align: center;  /* Centra el texto. */
+    padding: 20px 0;  /* Espaciado vertical (20px arriba y abajo). */
+}

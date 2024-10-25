@@ -1,0 +1,20 @@
+<table class="table table-dark table-striped">
+
+    <tbody>
+        {% for evento in eventos %}
+        <tr>
+            <td class="text-white">{{ evento[1] }}</td> <!-- Nombre -->
+            <td class="text-white"><i class="fa-solid fa-calendar-check"></i> {{ evento[2].strftime("%Y-%m-%d") }}</td> <!-- Fecha -->
+            <td class="text-white"><i class="fa-solid fa-user-clock"></i> {{ evento[2].strftime("%H:%M") }}</td> <!-- Hora -->
+            <td>
+                <a href="{{ evento[3] }}" class="btn btn-yellow btn-sm" target="_blank"><i class="fa-solid fa-arrow-pointer"></i> Abrir Zoom</a>
+            </td>
+            <td class="text-white">{{ evento[5] }} de {{ evento[4] }}</td> <!-- Registrados / Max Asistentes -->
+            <td>
+                <!-- podria quitar el btn osea este td y ya no saldría nada directametne en la columna-->
+                <button class="btn btn-danger btn-sm inscribirme-btn" data-evento-id="{{ evento[0] }}"><i class="fa-regular fa-hand"></i> Inscribirme</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

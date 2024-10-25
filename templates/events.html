@@ -1,0 +1,148 @@
+       <!-- Sección de eventos -->
+<div class="bg-dark">
+<div class="container pt-5">
+
+    <br><br>  <br><br>
+   <!--  <h1 class="text-white">Bienvenido a nuestra plataforma</h1>
+    <div class="text-white"><span>Fecha actual: {{ fecha }}</span>  <span>Hora actual: {{ hora }}</span></div>
+    
+     <h2 class="text-white" >Eventos Virtuales</h2>-->
+     
+
+
+
+    <h1 class="mb-5 text-white  text-center"><i class="fa-solid fa-house-laptop"></i> Eventos virtuales</h1>
+      <p>Toda nuestra selección de vinos, preparada para usted.</p>
+  
+    
+
+
+     <!--   <table class="table table-striped text-white">
+        <thead class="text-white">
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Link de Zoom</th>
+                <th>Asistentes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <td>{{ evento[1] }}</td>
+                <td>{{ evento[2] }}</td>
+                <td>{{ evento[3] }}</td>
+                <td><a href="{{ evento[4] }}" target="_blank">Abrir Zoom</a></td>
+                <td>{{ evento[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>     -->
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+    <div class="table-responsive">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th style="color:yellow"><i class="fa-solid fa-champagne-glasses"></i> Nombre del evento</th>
+                    <th style="color:yellow"><i class="fa-solid fa-calendar-check"></i> Fecha</th>
+                    <th style="color:yellow"><i class="fa-solid fa-user-clock"></i> Hora</th>
+                    <th style="color:yellow"><i class="fa-solid fa-link"></i> Link de Zoom</th>
+                    <th style="color:yellow"><i class="fa-solid fa-user-check"></i> Asistentes</th>
+                    <th style="color:yellow"><i class="fa-solid fa-person-dots-from-line"></i> Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-eventos">
+                {% for evento in eventos %}
+                <tr>
+                    <td class="text-white">{{ evento[1] }}</td>
+                    <td class="text-white"> {{ evento[2].strftime("%Y-%m-%d") }}</td>
+                    <td class="text-white">{{ evento[2].strftime("%H:%M") }}</td>
+                    <td>
+                        <a href="{{ evento[3] }}" class="btn btn-yellow btn-sm" style=" width: 127px;" target="_blank"><i class="fa-solid fa-arrow-pointer"></i> Abrir Zoom</a>
+                    </td>
+                    <td class="text-white"></i> {{ evento[5] }} de {{ evento[4] }}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm btn-inscribirme" data-evento-id="{{ evento[0] }}">
+                          <!--  <button class="btn btn-yellow btn-sm btn-inscribirme" data-evento-id="{{ evento[0] }}">-->
+                            <i class="fa-regular fa-thumbs-up"></i> Inscribirme
+                        </button> 
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Modal de inscripción diseño 1 
+    <div id="modalInscripcion" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="formInscripcion" class="d-flex justify-content-center">
+                <input type="hidden" name="evento_id" id="evento_id">
+                <label for="nombre_asistente">Nombre:</label>
+                <input type="text" id="nombre_asistente" name="nombre_asistente" required>
+                <button type="submit" class="btn btn-yellow">Inscribirme</button>
+                
+            </form>
+            <p>Sólo podrá inscribirse a un evento, caso contrario deberá ingresar al sitio nuevamente.</p>
+        </div>
+        
+    </div>-->
+    
+
+<!-- Modal de inscripción
+<div id="modalInscripcion" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <form id="formInscripcion" class="d-flex justify-content-center">
+            <input type="hidden" name="evento_id" id="evento_id">
+            <label for="nombre_asistente">Nombre:</label>
+            <input type="text" id="nombre_asistente" name="nombre_asistente" required>
+            <button type="submit" class="btn btn-yellow">Inscribirme</button>
+        </form>
+        <p>Sólo podrá inscribirse a un evento, caso contrario deberá ingresar al sitio nuevamente.</p>
+    </div>
+</div> -->
+
+
+
+
+<!-- Modal de inscripción -->
+<div id="modalInscripcion" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <form id="formInscripcion" class="d-flex flex-column">
+            <input type="hidden" name="evento_id" id="evento_id">
+            <label for="nombre_asistente">Nombre y apellido:</label>
+            <input type="text" id="nombre_asistente" name="nombre_asistente" required>
+            <button type="submit" class="btn btn-yellow">Inscribirme</button>
+        </form>
+        <p class="danger-text"><i class="fa-solid fa-circle-exclamation"></i> Sólo podrá inscribirse a un evento, caso contrario deberá ingresar al sitio nuevamente.</p>
+        <p class="danger-text"><i class="fa-solid fa-circle-exclamation"></i> Una vez inscripto, usted debe estar alerta al día y hora del evento.</p>
+    </div>
+</div>
+
+
+
+    
+    <br><br>  <br><br>
+</div>
+</div>

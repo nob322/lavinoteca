@@ -1,0 +1,677 @@
+<!DOCTYPE html>  <!-- Define el tipo de documento como HTML5. -->
+<html lang="es">  <!-- Comienza el documento HTML con el idioma español. -->
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" tabindex="0">
+     <!-- Head -->
+     {% include 'head.html' %} <!-- Incluir el head-->
+     <!-- Head -->
+      
+    <div id="fecha-hora" class="formatoFechaHora"><p id="fecha"><i class="fas fa-calendar-alt"></i>&nbsp;{{ fecha }}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p id="hora"><i class="fas fa-clock"></i> {{ hora }}</p></div>
+   
+    <!-- <div id="animationLoad" style="width=100%">
+        <p>loafing</p>
+    </div> -->
+    <!-- Header -->
+    {% include 'header.html' %} <!-- Incluir las bodegas-->
+    <!-- Header -->
+     <!-- arrow top -->
+     <a href="#" class="btn btn-dark btn-floating" id="btnSubir">
+        ↑
+    </a>
+    <!-- arrow topr -->
+    <!--we-->
+    {% include 'we.html' %} <!-- Incluir las bodegas-->
+    <!--we-->
+    <!--discover-->
+    {% include 'discover.html' %} <!-- Incluir las bodegas-->
+    <!--discover-->
+    <!-- slider Section -->
+    {% include 'slider.html' %} <!-- Incluir las bodegas-->
+    <!-- slider Section -->
+    <!--discover-->
+    {% include 'discover2.html' %} <!-- Incluir las bodegas-->
+    <!--discover-->
+    <!--charts-->
+    {% include 'charts.html' %} <!-- Incluir las bodegas-->
+    <!--charts-->
+    <!--newleter-->
+    {% include 'newleter.html' %} <!-- Incluir las bodegas-->
+    <!--newleter-->
+    <!--Events vituales Section-->
+    {% include 'events.html' %} <!-- Incluir las bodegas-->
+    <!--Eventos Section-->
+    <!-- we Section -->
+    {% include 'products.html' %} <!-- Incluir las bodegas-->
+    <!-- we Section -->
+    <!-- Features Section -->
+     {% include 'features.html' %} <!-- Incluir las bodegas-->
+    <!-- Features Section -->
+    <br><br><br> <br><br><br>
+   <!-- imagen parallax -->
+    {% include 'parallax.html' %} <!-- Incluir imagen parallax-->
+   <!-- imagen parallax -->
+   <!-- wineries Section -->
+    {% include 'wineries.html' %} <!-- Incluir las bodegas-->
+   <!-- wineries Section -->
+     
+   <!-- contact Section -->
+    {% include 'contact.html' %} <!-- Incluir el contacto -->
+   <!-- contact Section -->
+   <!-- Footer -->
+    {% include 'footer.html' %} <!-- Incluir el footer acá -->
+   <!-- Footer -->
+
+   
+    <!-- Incluye el archivo JavaScript externo -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>  <!-- Enlaza el archivo main.js desde la carpeta estática. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- ECharts CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- particles.js CDN -->
+     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+     <script>
+        /***********************************************
+        * SLIDER
+        ***********************************************/
+        new Glide('.glide', {
+            type: 'carousel',
+            autoplay: 4000, // Cambia de imagen cada 3 segundos
+            hoverpause: true, // Pausa al pasar el mouse
+            perView: 1, // Muestra una imagen a la vez
+            breakpoints: {
+                800: {
+                    perView: 1 // Ajusta a 1 imagen en pantallas pequeñas
+                }
+            }
+        }).mount();
+     </script>
+
+<script>
+
+    
+/***********************************************
+ * EFECTO MATRIZ
+ ***********************************************/
+ function iniciarMatrixRain(idDiv, options = {}) {
+    const contenedor = document.getElementById(idDiv);
+
+    if (!contenedor) {
+        console.error(`No se encontró el div con id "${idDiv}".`);
+        return;
+    }
+
+    // Establecer posición relativa para el contenedor
+    contenedor.style.position = "relative";
+
+    // Configuración personalizable
+    const caracteres = options.caracteres || "@ABCDEFGHIJKLMN@OPQRS@TUVWXYZ01@23456789";
+    const velocidad = options.velocidad || 3; // Velocidad de caída
+    const columnas = Math.floor(contenedor.clientWidth / 90); // Ajustar columnas según el ancho del div
+    const columnasData = [];
+
+    // Crear las columnas de lluvia
+    for (let i = 0; i < columnas; i++) {
+        const span = document.createElement("span");
+        span.textContent = getRandomChar();
+        span.style.position = "absolute"; // Asegurar posicionamiento dentro del div
+        span.style.color = "#000000"; // Color del texto
+        span.style.fontSize = "18px";
+        span.style.left = `${(i / columnas) * 100}%`;
+        span.style.top = `${Math.random() * contenedor.clientHeight}px`; // Posición inicial aleatoria
+        span.style.transition = "transform 0.5s linear"; // Suaviza la rotación
+
+        contenedor.appendChild(span); // Añadir carácter al contenedor
+        columnasData.push({
+            span,
+            top: parseFloat(span.style.top),
+            rotation: Math.random() * 360, // Rotación inicial aleatoria
+            estela: [] // Almacena estelas
+        });
+    }
+
+    // Función para obtener un carácter aleatorio
+    function getRandomChar() {
+        return caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    // Función de animación de la lluvia
+    function animarMatrix() {
+        columnasData.forEach((columna) => {
+            columna.top += 20; // Mover hacia abajo
+            columna.rotation += 10; // Girar sobre su eje
+
+            // Actualizar posición y rotación del carácter
+            columna.span.style.top = `${columna.top}px`;
+            columna.span.style.transform = `rotate(${columna.rotation}deg)`; // Aplicar rotación
+
+            // Crear estela
+            if (columna.top % 30 === 0) { // Cada 30 píxeles
+                const estela = document.createElement("span");
+                estela.textContent = columna.span.textContent; // La misma letra
+                estela.style.position = "absolute";
+                estela.style.color = "rgba(128, 128, 128, 0.5)"; // Color gris semitransparente
+                estela.style.fontSize = "18px";
+                estela.style.left = `${(columna.span.offsetLeft / contenedor.clientWidth) * 100}%`; // Misma posición horizontal
+                estela.style.top = `${columna.top}px`; // Colocar la estela en la posición actual
+                estela.style.transition = "opacity 1s"; // Suaviza la opacidad
+                contenedor.appendChild(estela); // Añadir estela al contenedor
+
+                // Hacer que la estela desaparezca
+                setTimeout(() => {
+                    estela.style.opacity = 0; // Desvanecer
+                    setTimeout(() => contenedor.removeChild(estela), 1000); // Eliminar después de desvanecerse
+                }, 0);
+            }
+
+            // Reiniciar si llega al fondo
+            if (columna.top > contenedor.clientHeight) {
+                columna.top = 0; // Reiniciar si llega al fondo
+                columna.span.textContent = getRandomChar(); // Cambiar el carácter
+                columna.rotation = Math.random() * 360; // Reiniciar rotación
+            }
+        });
+
+        setTimeout(animarMatrix, velocidad); // Repetir animación
+    }
+
+    animarMatrix(); // Iniciar animación
+}
+
+// Iniciar el efecto de lluvia en el div con id "ma"
+iniciarMatrixRain("ma", {
+    velocidad: 1, // Puedes personalizar la velocidad aquí
+});
+
+</script>
+
+
+    <script>
+      //  particlesJS("particles-js", {
+        //    particles: {
+          //      number: { value: 100 },
+            //    size: { value: 3 },
+              //  move: { speed: 6 },
+                //line_linked: { enable: true, distance: 150, color: "#000000", opacity: 0.4, width: 1 },
+//            },
+//            interactivity: {
+//                events: {
+//                    onhover: { enable: true, mode: "repulse" },
+//                    onclick: { enable: true, mode: "push" },
+//                    resize: true
+//                },
+//                modes: {
+//                    bubble: { distance: 400, duration: 2, size: 40, opacity: 8 },
+//                    repulse: { distance: 200, duration: 2 }
+//                }
+//            },
+//            retina_detect: true
+//        });
+  
+
+
+
+
+
+
+
+
+
+
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 30, density: { enable: true, value_area: 800 } }, // Densidad ajustada
+        color: { value: "#000000" }, // Color negro para las partículas
+        shape: {
+            type: "circle", // Partículas circulares
+            stroke: {
+                width: 0.5, // Sin borde, ajusta si quieres
+                color: "#000000"
+            },
+            polygon: { nb_sides: 8 }, // Número de lados si usas polígonos (opcional)
+        },
+        opacity: {
+            value: 0.7, // Opacidad inicial
+            random: false, // Sin opacidad aleatoria
+            anim: {
+                enable: true, // Anima la opacidad
+                speed: 0.3,
+                opacity_min: 0.4,
+                sync: false
+            }
+        },
+        size: {
+            value: 9, // Tamaño de las partículas
+            random: true, // Tamaño aleatorio
+            anim: {
+                enable: true, // Anima el tamaño
+                speed: 15,
+                size_min: 0.1,
+                sync: false
+            }
+        },
+        line_linked: {
+            enable: true,
+            distance: 100,
+            color: "#000000", // Líneas negras
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 3,
+            direction: "none", // Dirección del movimiento (puede ser: none, top, top-right, etc.)
+            random: false,
+            straight: false, // Las partículas no se mueven en línea recta
+            out_mode: "out", // Partículas reaparecen al salir del canvas
+            bounce: false, // Sin rebote en los bordes
+            attract: {
+                enable: false, // Sin atracción entre partículas
+                rotateX: 800,
+                rotateY: 1600
+            }
+        }
+    },
+    interactivity: {
+        detect_on: "canvas", // Detectar interactividad en el canvas
+        events: {
+            onhover: { enable: true, mode: "repulse" }, // Repulsión al pasar el mouse
+            onclick: { enable: true, mode: "push" }, // Agrega partículas al hacer clic
+            resize: true
+        },
+        modes: {
+            grab: {
+                distance: 400,
+                line_linked: { opacity: 1 }
+            },
+            bubble: {
+                distance: 400,
+                size: 40,
+                duration: 2,
+                opacity: 8,
+                speed: 3
+            },
+            repulse: { distance: 200, duration: 2 },
+            push: { particles_nb: 4 }, // Agrega 4 partículas al hacer clic
+            remove: { particles_nb: 2 } // Elimina 2 partículas al hacer clic derecho
+        }
+    },
+    retina_detect: true // Detecta pantallas Retina
+});
+    </script>
+
+
+
+    <script>
+        /**************************************************
+        * GRAFICOS
+        **************************************************/
+        // Contextos de los dos gráficos
+          // Aquí va el código JavaScript proporcionado arriba
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos de consumo histórico (últimos 10 años)
+            const historyData = {
+                years: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                values: [3100000, 2800000, 2700000, 2800000, 3000000, 3300000, 3600000, 3400000, 3500000, 3300000] // Datos actualizados        
+            };
+
+            // Datos de previsibilidad (próximos 10 años)
+            const forecastData = {
+                years: ['2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033'],
+                values: [3600000, 3700000, 3800000, 3900000, 4000000, 4100000, 4200000, 4300000, 4400000, 4500000]
+            };
+
+            // Gráfico de Consumo Histórico
+            const historicalChartOptions = {
+                chart: {
+                    type: 'line',
+                    height: '400px',
+                    width: '100%',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                series: [{
+                    name: 'Consumo Histórico de Vino',
+                    data: historyData.values
+                }],
+                xaxis: {
+                    categories: historyData.years,
+                    title: {
+                        text: 'Años',
+                        style: {
+                            color: 'white', // Color del texto del título del eje X
+                            fontSize: '16px',
+                            fontWeight: '300'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            // Aquí cada etiqueta (año) en el eje X será amarilla
+                            colors: forecastData.years.map(() => 'yellow'), // Aplica amarillo a cada año
+                            fontSize: '14px'
+                        }
+                    }
+                   
+                },
+                yaxis: {
+                    title: {
+                        text: 'Litros de vino que consumió Argentina',
+                        style: {
+                            color: 'white', // Color del texto del título del eje X
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: 'yellow', // Cambia esto a amarillo
+                            fontSize: '14px'
+                        },
+                        formatter: function (value) {
+                            return value / 1000000 + "M"; // Formato en millones
+                        }
+                    },
+                },
+                colors: ['yellow'], // Cambia el color de la serie a amarillo
+                tooltip: {
+                    theme: 'dark' // Opcional: cambia el tema del tooltip
+                },
+                markers: {
+                    size: 6, // Tamaño de los marcadores
+                    colors: ['yellow'], // Color de los marcadores
+                    strokeColors: '#fff', // Color del borde de los marcadores
+                    strokeWidth: 2, // Ancho del borde
+                    hover: {
+                        size: 8 // Tamaño al pasar el ratón
+                    }
+                },
+                fill: {
+                    opacity: 0.5,
+                    colors: ['yellow'] // Color amarillo
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2,
+                    colors: ['#fff'] // Color negro
+                }
+            };
+
+            const historicalChart = new ApexCharts(document.querySelector("#historicalChart"), historicalChartOptions);
+            historicalChart.render();
+
+            // Gráfico de Previsibilidad
+            const forecastChartOptions = {
+                chart: {
+                    type: 'line',
+                    height: '400px',
+                    width: '100%',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                series: [{
+                    name: 'Previsión de Consumo de Vino',
+                    data: forecastData.values
+                }],
+                xaxis: {
+                    categories: forecastData.years,
+                    title: {
+                        text: 'Años',
+                        style: {
+                            color: 'white', // Color del texto del título del eje X
+                            fontSize: '16px',
+                            fontWeight: '300'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            // Aquí cada etiqueta (año) en el eje X será amarilla
+                            colors: forecastData.years.map(() => 'yellow'), // Aplica amarillo a cada año
+                            fontSize: '14px'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Previsión de consumo',
+                        style: {
+                            color: 'white', // Color del texto del título del eje X
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: 'yellow', // Cambia esto a amarillo
+                            fontSize: '14px'
+                        },
+                        formatter: function (value) {
+                            return value / 1000000 + "M"; // Formato en millones
+                        }
+                    }
+                },
+                markers: {
+                    size: 6, // Tamaño de los marcadores
+                    colors: ['yellow'], // Color de los marcadores
+                    strokeColors: '#fff', // Color del borde de los marcadores
+                    strokeWidth: 2, // Ancho del borde
+                    hover: {
+                        size: 8 // Tamaño al pasar el ratón
+                    }
+                },
+                fill: {
+                    opacity: 0.5,
+                    colors: ['yellow'] // Color amarillo
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2,
+                    colors: ['#fff'] // Color negro
+                }
+            };
+
+            const forecastChart = new ApexCharts(document.querySelector("#forecastChart"), forecastChartOptions);
+            forecastChart.render();
+        });
+
+          </script>
+          <script>
+            //es necesario encapsularlos en funciones para que no hagan confluictos entre si al tener mismas variables, etc y se ejecuten
+            //de forma indivicual como un único code
+         // Función para crear el gráfico de consumo per cápita por año
+         function crearGraficoConsumoPerCapitaPorAnio() {
+            const options = {
+                chart: {
+                    type: 'line',
+                    height: 400,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                title: {
+                    text: 'Consumo Per Cápita de Vino en Argentina (Últimos 5 Años)',
+                    align: 'center',
+                    style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        color: 'white' // Color amarillo para el título
+                    }
+                },
+                series: [{
+                    name: 'Litros por Persona',
+                    data: [9.2, 8.8, 8.5, 7.5, 7.0], // Datos de los últimos 5 años
+                    color: '#FFFFFF' // Color blanco para la línea del gráfico
+                }],
+                xaxis: {
+                    categories: ['2019', '2020', '2021', '2022', '2023'],
+                    title: {
+                        text: 'Años',
+                        style: {
+                            color: '#FFF', // Color amarillo para el título
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#FFFF00', // Color amarillo para etiquetas de eje X
+                            fontSize: '14px'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Litros',
+                        style: {
+                            color: '#fff', // Color amarillo para el título del eje Y
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#FFFF00', // Color amarillo para etiquetas de eje Y
+                            fontSize: '14px'
+                        },
+                        formatter: function (value) {
+                            return value + " L"; // Formato en litros
+                        }
+                    }
+                },
+                tooltip: {
+                    theme: 'dark'
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#consumoPerCapitaPorAnio"), options);
+            chart.render();
+        }
+
+        // Función para crear el gráfico de consumo per cápita por provincia
+        function crearGraficoConsumoPerCapitaPorProvincia() {
+            const consumoPorProvincia2023 = {
+                provinces: [
+                    'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 
+                    'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 
+                    'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 
+                    'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 
+                    'Tucumán'
+                ],
+                values: [
+                    8.0, 7.5, 6.0, 5.5, 9.0, 7.0, 
+                    6.5, 5.0, 4.5, 6.0, 8.0, 12.0, 
+                    4.0, 7.0, 8.5, 5.5, 10.0, 6.5, 
+                    4.5, 7.0, 5.5, 3.0, 4.5 // Litros consumidos per cápita en 2023
+                ]
+            };
+        
+            const options = {
+                chart: {
+                    type: 'bar',
+                    height: 400,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                title: {
+                    text: 'Consumo de Vino por Provincia en Argentina (2023)',
+                    align: 'center',
+                    style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        color: 'white' //#FFFF00 Color amarillo para el título
+                    }
+                },
+                series: [{
+                    name: 'Litros consumidos per cápita',
+                    data: consumoPorProvincia2023.values,
+                    color: '#FFFFFF' // Color blanco para las barras del gráfico
+                }],
+                xaxis: {
+                    categories: consumoPorProvincia2023.provinces,
+                    title: {
+                        text: 'Provincias',
+                        style: {
+                            color: 'white', // Color amarillo para el título
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#FFFF00', // Color amarillo para etiquetas de eje X
+                            fontSize: '14px'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Litros per cápita',
+                        style: {
+                            color: 'white', // Color amarillo para el título del eje Y
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#FFFF00', // Color amarillo para etiquetas de eje Y
+                            fontSize: '14px'
+                        },
+                        formatter: function (value) {
+                            return value + " L"; // Formato en litros
+                        }
+                    }
+                },
+                tooltip: {
+                    theme: 'dark'
+                },
+                dataLabels: {
+                    enabled: true, // Habilitar etiquetas de datos
+                    style: {
+                        colors: ['#000000'], // Color negro para los valores dentro de las barras
+                        fontSize: '14px',
+                        fontWeight: 'bold'
+                    }
+                }
+            };
+        
+            const chart = new ApexCharts(document.querySelector("#consumoPerCapitaPorProvincia"), options);
+            chart.render();
+        }
+        // Llamar a las funciones para crear los gráficos
+        crearGraficoConsumoPerCapitaPorAnio();
+        crearGraficoConsumoPerCapitaPorProvincia();
+          </script>
+    
+          <script>
+
+            //arrow top
+            const btnSubir = document.getElementById('btnSubir');
+        
+            // Mostrar u ocultar el botón al hacer scroll
+            window.onscroll = function () {
+                if (document.documentElement.scrollTop > 100) {
+                    btnSubir.classList.add('mostrar'); // Mostrar con transición
+                } else {
+                    btnSubir.classList.remove('mostrar'); // Ocultar con transición
+                }
+            };
+        
+            // Subir al principio de la página con un scroll suave
+            btnSubir.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        </script>
+
+        
+</body>
+</html>
